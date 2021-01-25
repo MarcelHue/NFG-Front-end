@@ -1,0 +1,16 @@
+table {
+  width: 100%;
+}
+
+.mat-column-genre {
+  word-break: break-word;
+}
+
+mat-paginator {
+  display: flex;
+}
+
+.mat-dialog-container {
+}
+
+

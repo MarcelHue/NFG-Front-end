@@ -1,0 +1,37 @@
+<div mat-dialog-content>
+  <h1 mat-dialog-title>Update: {{data.title}}</h1>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Movie Title</mat-label>
+    <input [(ngModel)]="data.title" matInput required>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Movie Description</mat-label>
+    <input [(ngModel)]="data.description" matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Movie Year</mat-label>
+    <input [(ngModel)]="data.year" matInput>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Movie Type</mat-label>
+    <mat-select [(ngModel)]="data.typeId" [value]="data.typeId" required>
+      <mat-option *ngFor="let option of types" [value]="option.id">{{option.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Movie Genre</mat-label>
+    <mat-select [(ngModel)]="data.genreId" [value]="data.genreId" multiple>
+      <mat-option *ngFor="let option of genre" [value]="option.id">{{option.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+</div>
+<div mat-dialog-actions>
+  <button [mat-dialog-close]="data" class="btn" mat-raised-button>Update</button>
+</div>

@@ -1,0 +1,39 @@
+<form [formGroup]="registerForm" class="mat-dialog-container" style="text-align: center">
+  <div>
+    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
+    <h2>Register</h2>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label for="firstName">First Name</mat-label>
+      <input formControlName="firstName" matInput type="text"/>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Last Name</mat-label>
+      <input formControlName="lastName" matInput type="text"/>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>E-Mail</mat-label>
+      <input formControlName="EMail" matInput type="text"/>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput type="password"/>
+    </mat-form-field>
+  </div>
+
+  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+    <div *ngIf="f.password.errors.required">Password is required</div>
+    <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+  </div>
+  <div>
+    <button (click)="onSubmit()" [disabled]="loading" class="btn btn-primary">Register</button>
+    <button class="btn" routerLink="/login">Cancel</button>
+  </div>
+</form>

@@ -1,0 +1,41 @@
+<div mat-dialog-content>
+  <h1 mat-dialog-title>Add a Movie</h1>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Movie Title</mat-label>
+    <label>
+      <input [(ngModel)]="movie.title" matInput required>
+    </label>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Movie Description</mat-label>
+    <label>
+      <input [(ngModel)]="movie.description" matInput>
+    </label>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Movie Year</mat-label>
+    <label>
+      <input [(ngModel)]="movie.year" matInput>
+    </label>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Type</mat-label>
+    <mat-select [(ngModel)]="movie.typeId" [value]="movie.typeId" required>
+      <mat-option *ngFor="let option of types" [value]="option.id">{{option.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Movie Genre</mat-label>
+    <mat-select [(ngModel)]="movie.genreId" [value]="movie.genreId" multiple>
+      <mat-option *ngFor="let option of genre" [value]="option.id">{{option.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button [disabled]="!movie.title || !movie.typeId" [mat-dialog-close]="movie" class="btn" mat-raised-button>Add
+  </button>
+</div>

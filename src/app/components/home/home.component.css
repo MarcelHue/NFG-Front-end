@@ -1,0 +1,36 @@
+table {
+  width: 100%;
+}
+
+.mat-column-genre {
+  word-break: break-word;
+}
+
+.del {
+  display: inline-block;
+  border: none;
+  background: #431212;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+
+.add {
+  background: #144312;
+}
+
+.upd {
+  display: inline-block;
+  border: none;
+  background: #121e43;
+  padding: 7px 20px;
+  cursor: pointer;
+}
+
+mat-paginator {
+  display: flex;
+}
+
+.mat-dialog-container {
+}
+
+

@@ -1,0 +1,58 @@
+<div class="mat-dialog-container">
+  <mat-form-field appearance="fill">
+    <mat-label>Search Movie...</mat-label>
+    <input #input (keyup)="applyFilter($event)" matInput>
+  </mat-form-field>
+</div>
+
+<div>
+  <table [dataSource]="movieList" mat-table matSort>
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell *matHeaderCellDef> Title</mat-header-cell>
+      <mat-cell *matCellDef="let movie"> {{movie.title}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <mat-header-cell *matHeaderCellDef> Description</mat-header-cell>
+      <mat-cell *matCellDef="let movie"> {{movie.description}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="year">
+      <mat-header-cell *matHeaderCellDef> Year</mat-header-cell>
+      <mat-cell *matCellDef="let movie"> {{movie.year}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="type.name">
+      <mat-header-cell *matHeaderCellDef> Type</mat-header-cell>
+      <mat-cell *matCellDef="let movie">{{movie.typeId}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="genre">
+      <mat-header-cell *matHeaderCellDef> Genre</mat-header-cell>
+      <mat-cell *matCellDef="let movie">{{movie.genreId}}</mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="username">
+      <mat-header-cell *matHeaderCellDef> Last Edit by</mat-header-cell>
+      <mat-cell *matCellDef="let movie">{{movie.userId}}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="favorite">
+      <mat-header-cell *matHeaderCellDef>Favorites</mat-header-cell>
+      <mat-cell *matCellDef="let movie">
+        <mat-checkbox (click)="fav(movie)" [checked]="selection.isSelected(movie)"
+                      style="padding-left: 12px"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
+    <tr *matNoDataRow class="mat-row">
+      <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+    </tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+
